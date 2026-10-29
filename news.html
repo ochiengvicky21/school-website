@@ -6,13 +6,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>News & Events | The Little Harvad</title>
+<title>News & Events | Mellanies Academy</title>
 
 <link rel="stylesheet" href="css/style.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<script src="https://kit.fontawesome.com/6d2ea823d0.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -28,7 +26,7 @@
 
 <div class="school-name">
 
-<h2>THE LITTLE HARVAD</h2>
+<h2>MELLANIES ACADEMY</h2>
 
 <span>Knowledge • Discipline • Excellence</span>
 
@@ -119,7 +117,7 @@ placeholder="Search news, events or announcements...">
 
 <div>
 
-<img src="images/news/featured.jpg">
+<img src="images/hero12.jpg">
 
 </div>
 
@@ -133,7 +131,7 @@ Our learners once again demonstrated academic excellence with impressive nationa
 
 </p>
 
-<a href="#" class="btn-primary">
+<a href="academics.html" class="btn-primary">
 
 Read Full Story
 
@@ -159,11 +157,11 @@ Read Full Story
 
 </div>
 
-<div class="news-grid">
+<div class="news-grid" data-news-list>
 
 <article>
 
-<img src="images/news/news1.jpg">
+<img src="images/hero12.jpg">
 
 <h3>Science Congress</h3>
 
@@ -173,13 +171,13 @@ Students showcased innovative scientific projects.
 
 </p>
 
-<a href="#">Read More →</a>
+<a href="academics.html">Explore academics →</a>
 
 </article>
 
 <article>
 
-<img src="images/news/news2.jpg">
+<img src="images/hero12.jpg">
 
 <h3>Sports Day</h3>
 
@@ -189,13 +187,13 @@ Annual athletics competitions were successfully held.
 
 </p>
 
-<a href="#">Read More →</a>
+<a href="student-life.html">Explore school life →</a>
 
 </article>
 
 <article>
 
-<img src="images/news/news3.jpg">
+<img src="images/hero12.jpg">
 
 <h3>Music Festival</h3>
 
@@ -205,7 +203,7 @@ Our choir qualified for regional competitions.
 
 </p>
 
-<a href="#">Read More →</a>
+<a href="student-life.html">Explore school life →</a>
 
 </article>
 
@@ -227,7 +225,7 @@ Our choir qualified for regional competitions.
 
 </div>
 
-<div class="cards">
+<div class="cards" data-event-list>
 
 <div class="card">
 
@@ -303,7 +301,7 @@ January 2027
 
 </div>
 
-<div class="cards">
+<div class="cards" data-notice-list>
 
 <div class="card">
 
@@ -365,17 +363,23 @@ Subscribe to receive school news directly in your inbox.
 
 </p>
 
-<form class="newsletter">
+<form class="newsletter" data-submission-form="newsletter">
+<div class="honeypot" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
 <input
 type="email"
+name="email"
+required
 placeholder="Enter your email">
 
-<button class="btn-primary">
+<button type="submit" class="btn-primary">
 
 Subscribe
 
 </button>
+<div class="turnstile-widget" data-turnstile></div>
+
+<p class="form-response" data-form-status role="status" aria-live="polite"></p>
 
 </form>
 
@@ -389,7 +393,7 @@ Subscribe
 
 <div>
 
-<h3>The Little Harvad Academy</h3>
+<h3>Mellanies Academy</h3>
 
 <p>
 
@@ -427,17 +431,17 @@ Empowering Every Learner.
 
 <div class="copyright">
 
-© 2026 Your School Name
+© 2026 Mellanies Academy. All Rights Reserved.
 
 </div>
 <!-- ==========================
 FLOATING WHATSAPP
 ========================== -->
 
-<a href="https://wa.me/254742676542?text=Hello%20Little%20Harvard%20School,%20I%20would%20like%20to%20make%20an%20enquiry."
+<a href="https://wa.me/254742676542?text=Hello%20Mellanies%20Academy,%20I%20would%20like%20to%20make%20an%20enquiry."
 class="whatsapp-float"
 target="_blank"
-aria-label="Chat with Little Harvard School on WhatsApp">
+aria-label="Chat with Mellanies Academy on WhatsApp">
 
 <i class="fab fa-whatsapp"></i>
 
@@ -446,6 +450,9 @@ aria-label="Chat with Little Harvard School on WhatsApp">
 </footer>
 
 <script src="js/script.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/site-data.js"></script>
+<script src="js/public-site.js"></script>
 
 </body>
 

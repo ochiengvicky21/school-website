@@ -6,13 +6,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Contact Us | The Little Harvad</title>
+<title>Contact Us | Mellanies Academy</title>
 
 <link rel="stylesheet" href="css/style.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<script src="https://kit.fontawesome.com/6d2ea823d0.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -28,7 +26,7 @@
 
 <div class="school-name">
 
-<h2>THE LITTLE HARVAD</h2>
+<h2>MELLANIES ACADEMY</h2>
 
 <span>Knowledge • Discipline • Excellence</span>
 
@@ -108,9 +106,8 @@ Choose the most convenient way to contact us.
 
 <h3>Location</h3>
 
-<p>
-School Address<br>
-Town, County, Kenya
+<p data-school-setting="address">
+P.O. Box 40300, Kenya
 </p>
 
 </div>
@@ -123,8 +120,7 @@ Town, County, Kenya
 
 <p>
 
-+254 700 000 000<br>
-+254 711 111 111
+<span data-school-setting="phone">+254 742 676 542</span>
 
 </p>
 
@@ -138,9 +134,7 @@ Town, County, Kenya
 
 <p>
 
-info@yourschool.ac.ke<br>
-
-admissions@yourschool.ac.ke
+<span data-school-setting="email">ochiengvicky21@gmail.com</span>
 
 </p>
 
@@ -180,17 +174,18 @@ Monday - Friday<br>
 
 </div>
 
-<form class="contact-form">
+<form class="contact-form" data-submission-form="contact">
+<div class="honeypot" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
-<input type="text" placeholder="Full Name" required>
+<input type="text" name="name" placeholder="Full Name" required>
 
-<input type="email" placeholder="Email Address" required>
+<input type="email" name="email" placeholder="Email Address" required>
 
-<input type="tel" placeholder="Phone Number">
+<input type="tel" name="phone" placeholder="Phone Number">
 
-<select>
+<select name="department" required>
 
-<option>Select Department</option>
+<option value="">Select Department</option>
 
 <option>Admissions</option>
 
@@ -206,15 +201,18 @@ Monday - Friday<br>
 
 </select>
 
-<input type="text" placeholder="Subject">
+<input type="text" name="subject" placeholder="Subject">
 
-<textarea rows="7" placeholder="Write your message..." required></textarea>
+<textarea name="message" rows="7" placeholder="Write your message..." required></textarea>
 
-<button class="btn-primary">
+<button type="submit" class="btn-primary">
 
 Send Message
 
 </button>
+<div class="turnstile-widget" data-turnstile></div>
+
+<p class="form-response" data-form-status role="status" aria-live="polite"></p>
 
 </form>
 
@@ -236,16 +234,36 @@ Send Message
 
 <div class="map-placeholder">
 
-<h2>Google Maps Placeholder</h2>
+<h2>Plan your visit</h2>
 
 <p>
-Replace this section with an embedded Google Map.
+Please contact the school office for directions and campus access information.
 </p>
 
 </div>
 
 </div>
 
+</section>
+
+<section id="visit-request" class="features">
+  <div class="container">
+    <div class="section-title">
+      <h2>Request a Campus Visit</h2>
+      <p>Tell us when you would like to visit and the school office will follow up.</p>
+    </div>
+    <form class="contact-form" data-submission-form="visit">
+      <div class="honeypot" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <input type="text" name="name" placeholder="Parent / Guardian Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="date" name="visitDate" aria-label="Preferred visit date" required>
+      <textarea name="message" rows="4" placeholder="Anything you'd like us to know?" required></textarea>
+      <button type="submit" class="btn-primary">Request a visit</button>
+      <div class="turnstile-widget" data-turnstile></div>
+      <p class="form-response" data-form-status role="status" aria-live="polite"></p>
+    </form>
+  </div>
 </section>
 
 <!-- DEPARTMENTS -->
@@ -268,9 +286,7 @@ Replace this section with an embedded Google Map.
 
 <h3>Admissions</h3>
 
-<p>
-admissions@yourschool.ac.ke
-</p>
+<p data-school-setting="email">ochiengvicky21@gmail.com</p>
 
 </div>
 
@@ -281,7 +297,7 @@ admissions@yourschool.ac.ke
 <h3>Accounts</h3>
 
 <p>
-accounts@yourschool.ac.ke
+Contact the school office for assistance.
 </p>
 
 </div>
@@ -293,7 +309,7 @@ accounts@yourschool.ac.ke
 <h3>ICT Office</h3>
 
 <p>
-ict@yourschool.ac.ke
+Contact the school office for assistance.
 </p>
 
 </div>
@@ -305,7 +321,7 @@ ict@yourschool.ac.ke
 <h3>Principal</h3>
 
 <p>
-principal@yourschool.ac.ke
+Contact the school office for assistance.
 </p>
 
 </div>
@@ -330,15 +346,9 @@ principal@yourschool.ac.ke
 
 <div class="social-links">
 
-<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="mailto:ochiengvicky21@gmail.com" data-school-href="email"><i class="fas fa-envelope" aria-hidden="true"></i> Email the school</a>
 
-<a href="#"><i class="fab fa-instagram"></i></a>
-
-<a href="#"><i class="fab fa-youtube"></i></a>
-
-<a href="#"><i class="fab fa-twitter"></i></a>
-
-<a href="#"><i class="fab fa-tiktok"></i></a>
+<a href="https://wa.me/254742676542" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp</a>
 
 </div>
 
@@ -362,7 +372,7 @@ We welcome parents and guardians to tour our campus and meet our team.
 
 </p>
 
-<a href="#" class="btn-primary">
+<a href="#visit-request" class="btn-primary">
 
 Schedule a Visit
 
@@ -406,9 +416,9 @@ Knowledge • Discipline • Excellence
 
 <h3>Contact</h3>
 
-<p>📞 +254 700 000 000</p>
+<p>📞 +254 742 675 642</p>
 
-<p>✉ info@yourschool.ac.ke</p>
+<p>✉ info@melaniesacademy.ac.ke</p>
 
 <p>📍 School Address</p>
 
@@ -418,17 +428,17 @@ Knowledge • Discipline • Excellence
 
 <div class="copyright">
 
-© 2026 Your School Name. All Rights Reserved.
+© 2026 Mellanies Academy. All Rights Reserved.
 
 </div>
 <!-- ==========================
 FLOATING WHATSAPP
 ========================== -->
 
-<a href="https://wa.me/254742676542?text=Hello%20Little%20Harvard%20School,%20I%20would%20like%20to%20make%20an%20enquiry."
+<a href="https://wa.me/254742676542?text=Hello%20Mellanies%20Academy,%20I%20would%20like%20to%20make%20an%20enquiry."
 class="whatsapp-float"
 target="_blank"
-aria-label="Chat with Little Harvard School on WhatsApp">
+aria-label="Chat with Mellanies Academy on WhatsApp">
 
 <i class="fab fa-whatsapp"></i>
 
@@ -437,6 +447,9 @@ aria-label="Chat with Little Harvard School on WhatsApp">
 </footer>
 
 <script src="js/script.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/site-data.js"></script>
+<script src="js/public-site.js"></script>
 
 </body>
 

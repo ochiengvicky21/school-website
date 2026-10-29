@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="School website content and enquiries dashboard.">
+  <title>School Office | Mellanies Academy</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <main class="auth-screen" id="auth-screen">
+    <form class="auth-card" id="login-form">
+      <a class="admin-brand" href="index.html">
+        <span class="brand-mark">LH</span>
+        <span><strong>Mellanies Academy</strong><small>School office</small></span>
+      </a>
+      <p class="eyebrow">STAFF ACCESS</p>
+      <h1>Sign in to your school office</h1>
+      <p class="auth-description">Use the staff account invited by your school administrator.</p>
+      <label>Email address<input name="email" type="email" autocomplete="username" required></label>
+      <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="button button-primary" type="submit">Sign in securely</button>
+      <p id="login-error" class="auth-error" role="alert" aria-live="polite"></p>
+      <p class="auth-help">Need access? Ask the school administrator to create your Supabase staff account and assign a role.</p>
+    </form>
+  </main>
+  <div class="admin-layout" id="admin-app" hidden>
+    <aside class="admin-sidebar">
+      <a class="admin-brand" href="index.html">
+        <span class="brand-mark">LH</span>
+        <span><strong>Mellanies Academy</strong><small>School office</small></span>
+      </a>
+      <p class="sidebar-label">WORKSPACE</p>
+      <nav class="admin-nav" aria-label="Admin sections">
+        <button class="active" data-panel="overview"><span>◫</span> Overview</button>
+        <button data-panel="news"><span>✦</span> News & stories</button>
+        <button data-panel="events"><span>▦</span> Events</button>
+        <button data-panel="notices"><span>◉</span> Notice board</button>
+        <button data-panel="site"><span>▣</span> Website media & sections</button>
+        <button data-panel="inbox"><span>✉</span> Admissions & inbox <b id="inbox-count">0</b></button>
+        <button data-panel="settings"><span>⚙</span> School details</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <p>Updates are published to the public website for every visitor.</p>
+        <a href="index.html">← View public website</a>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <div><p class="eyebrow">MELLANIES ACADEMY</p><h1 id="page-title">Overview</h1></div>
+        <div class="header-actions">
+          <span class="local-badge"><i></i> <span id="staff-identity">Signed in</span></span>
+          <button type="button" class="button button-outline" id="sign-out">Sign out</button>
+          <button type="button" class="button button-outline" id="export-data">Export backup</button>
+          <label class="button button-outline import-button" for="import-data">Import backup</label>
+          <input type="file" id="import-data" accept="application/json,.json" hidden>
+        </div>
+      </header>
+
+      <section class="admin-panel active" id="panel-overview">
+        <div class="welcome-row">
+          <div><h2>Good day, school office</h2><p>Keep families up to date and respond to new enquiries.</p></div>
+          <button type="button" class="button button-primary" data-go="news">＋ Create an update</button>
+        </div>
+        <div class="metric-grid">
+          <article class="metric"><span>Published stories</span><strong id="metric-news">0</strong><small>Visible on the public site</small></article>
+          <article class="metric"><span>Upcoming events</span><strong id="metric-events">0</strong><small>On the school calendar</small></article>
+          <article class="metric"><span>Open enquiries</span><strong id="metric-inbox">0</strong><small>Admissions and contact messages</small></article>
+        </div>
+        <div class="dashboard-grid">
+          <section class="surface"><div class="surface-heading"><div><p class="eyebrow">QUICK START</p><h2>Manage your school website</h2></div></div>
+            <div class="quick-actions">
+              <button data-go="news"><span>✦</span><strong>Share a school story</strong><small>Post achievements, classroom news and highlights.</small></button>
+              <button data-go="events"><span>▦</span><strong>Add an upcoming event</strong><small>Help families plan for important school dates.</small></button>
+              <button data-go="inbox"><span>✉</span><strong>Review enquiries</strong><small>Find admission applications and contact requests.</small></button>
+            </div>
+          </section>
+          <section class="surface"><p class="eyebrow">YOUR CONTENT</p><h2>Recent updates</h2><div id="recent-content" class="recent-list"></div></section>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-news">
+        <div class="panel-intro"><p class="eyebrow">PUBLIC WEBSITE</p><h2>News & stories</h2><p>Publish learner achievements, classroom highlights and school community stories.</p></div>
+        <div class="editor-layout">
+          <form class="surface editor-form" data-content-form="news">
+            <h3 data-form-title>Create a story</h3>
+            <input type="hidden" name="contentId">
+            <label>Headline<input name="title" maxlength="100" required placeholder="e.g. Our learners shine at science fair"></label>
+            <label>Story<textarea name="body" rows="5" maxlength="500" required placeholder="Write a short update for families"></textarea></label>
+            <label>Publish date<input type="date" name="date" required></label>
+            <label class="check-row"><input type="checkbox" name="published" checked> Publish on the public site</label>
+            <button class="button button-primary" type="submit" data-submit-label="Publish story">Publish story</button>
+            <p class="form-feedback" aria-live="polite"></p>
+          </form>
+          <section class="surface"><div class="surface-heading"><h3>Stories</h3><span class="subtle">Latest first</span></div><div class="managed-list" data-content-list="news"></div></section>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-events">
+        <div class="panel-intro"><p class="eyebrow">SCHOOL CALENDAR</p><h2>Events</h2><p>Share open days, parent meetings, trips and term dates with your community.</p></div>
+        <div class="editor-layout">
+          <form class="surface editor-form" data-content-form="events">
+            <h3 data-form-title>Add an event</h3>
+            <input type="hidden" name="contentId">
+            <label>Event name<input name="title" maxlength="100" required placeholder="e.g. Open Day"></label>
+            <label>Details<textarea name="body" rows="4" maxlength="500" required placeholder="What should families know?"></textarea></label>
+            <label>Event date<input type="date" name="date" required></label>
+            <label class="check-row"><input type="checkbox" name="published" checked> Show on the public site</label>
+            <button class="button button-primary" type="submit" data-submit-label="Add event">Add event</button>
+            <p class="form-feedback" aria-live="polite"></p>
+          </form>
+          <section class="surface"><div class="surface-heading"><h3>Scheduled events</h3><span class="subtle">Upcoming first</span></div><div class="managed-list" data-content-list="events"></div></section>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-notices">
+        <div class="panel-intro"><p class="eyebrow">FAMILY INFORMATION</p><h2>Notice board</h2><p>Post timely reminders and useful information for parents and guardians.</p></div>
+        <div class="editor-layout">
+          <form class="surface editor-form" data-content-form="notices">
+            <h3 data-form-title>Create a notice</h3>
+            <input type="hidden" name="contentId">
+            <label>Notice title<input name="title" maxlength="100" required placeholder="e.g. Term dates announced"></label>
+            <label>Message<textarea name="body" rows="4" maxlength="500" required placeholder="Add a clear reminder or announcement"></textarea></label>
+            <label>Publish date<input type="date" name="date" required></label>
+            <label class="check-row"><input type="checkbox" name="published" checked> Publish on the public site</label>
+            <button class="button button-primary" type="submit" data-submit-label="Post notice">Post notice</button>
+            <p class="form-feedback" aria-live="polite"></p>
+          </form>
+          <section class="surface"><div class="surface-heading"><h3>Notices</h3><span class="subtle">Newest first</span></div><div class="managed-list" data-content-list="notices"></div></section>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-site">
+        <div class="panel-intro"><p class="eyebrow">WEBSITE CONTENT</p><h2>Documents, photos & page sections</h2><p>Upload public downloads and school photos, maintain staff profiles, and add editable information sections to public pages.</p></div>
+        <div class="admin-notice" id="cms-setup-warning" hidden><strong>Storage/CMS setup required.</strong> Run <code>supabase/cms.sql</code> in your Supabase SQL Editor before managing uploads or page sections.</div>
+        <div class="editor-layout">
+          <form class="surface editor-form" id="asset-form">
+            <h3 id="asset-form-title">Add a website upload</h3>
+            <input type="hidden" name="assetId">
+            <label>Upload type
+              <select name="kind" required>
+                <option value="document">Download (PDF or Word)</option>
+                <option value="gallery">Gallery photo</option>
+                <option value="staff">Staff profile photo</option>
+              </select>
+            </label>
+            <div class="gallery-asset-fields" data-gallery-fields hidden>
+              <label>Photo page
+                <select name="imagePageKey">
+                  <option value="gallery">Gallery</option><option value="home">Home</option><option value="about">About</option>
+                  <option value="academics">Academics</option><option value="admissions">Admissions</option><option value="contact">Contact</option>
+                  <option value="downloads">Downloads</option><option value="facilities">Facilities</option><option value="faq">FAQ</option>
+                  <option value="news">News</option><option value="student-life">Student life</option>
+                </select>
+              </label>
+            </div>
+            <label>Title<input name="title" maxlength="120" required placeholder="e.g. 2027 Fee Structure"></label>
+            <label>Description<textarea name="description" rows="3" maxlength="1000" placeholder="Brief information shown on the public website"></textarea></label>
+            <label>File<input name="file" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp" required></label>
+            <div class="staff-asset-fields" data-staff-fields hidden>
+              <label>Staff member name<input name="personName" maxlength="120"></label>
+              <label>Position<input name="position" maxlength="120"></label>
+              <label>Department<input name="department" maxlength="120"></label>
+              <label>Public email (optional)<input name="email" type="email" maxlength="254"></label>
+              <label>Public phone (optional)<input name="phone" type="tel" maxlength="40"></label>
+            </div>
+            <button class="button button-primary" type="submit">Save upload</button>
+            <button class="button button-outline" id="cancel-asset-edit" type="button" hidden>Cancel replacement</button>
+            <p class="form-feedback" aria-live="polite"></p>
+            <small class="subtle">Uploads are public immediately. PDF, Word, JPG, PNG or WebP; maximum 10 MB. Never upload private or student records.</small>
+          </form>
+          <section class="surface"><div class="surface-heading"><h3>Website uploads</h3></div><div class="managed-list" id="asset-list"></div></section>
+        </div>
+        <div class="editor-layout section-editor-layout">
+          <form class="surface editor-form" id="section-form">
+            <h3 id="section-form-title">Add a page section</h3>
+            <input type="hidden" name="sectionId">
+            <label>Public page
+              <select name="pageKey" required>
+                <option value="home">Home</option><option value="about">About</option><option value="academics">Academics</option>
+                <option value="admissions">Admissions</option><option value="contact">Contact</option><option value="downloads">Downloads</option>
+                <option value="facilities">Facilities</option><option value="faq">FAQ</option><option value="gallery">Gallery</option>
+                <option value="news">News</option><option value="staff">Staff</option><option value="student-life">Student life</option>
+              </select>
+            </label>
+            <label>Section heading<input name="title" maxlength="120" required></label>
+            <label>Section text<textarea name="body" rows="6" maxlength="5000" required></textarea></label>
+            <label class="check-row"><input type="checkbox" name="published" checked> Show on the public page</label>
+            <button class="button button-primary" type="submit">Save page section</button>
+            <button class="button button-outline" id="cancel-section-edit" type="button" hidden>Cancel edit</button>
+            <p class="form-feedback" aria-live="polite"></p>
+          </form>
+          <section class="surface"><div class="surface-heading"><h3>Custom page sections</h3></div><div class="managed-list" id="section-list"></div></section>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-inbox">
+        <div class="panel-intro"><p class="eyebrow">FAMILY COMMUNICATION</p><h2>Admissions & inbox</h2><p>New family enquiries arrive here securely. Reply by email or mark messages handled.</p></div>
+        <section class="surface inbox-surface">
+          <div class="surface-heading"><div><h3>Messages</h3><p class="subtle">Replies are sent to the family's email address.</p></div><button id="clear-handled" class="button button-outline" type="button">Clear handled</button></div>
+          <div id="inbox-list"></div>
+        </section>
+      </section>
+
+      <section class="admin-panel" id="panel-settings">
+        <div class="panel-intro"><p class="eyebrow">PUBLIC WEBSITE</p><h2>School details</h2><p>Update key school information and the home page introduction.</p></div>
+        <form class="surface settings-form" id="settings-form">
+          <div class="settings-grid">
+            <label>School name<input name="schoolName" maxlength="100" required></label>
+            <label>School motto<input name="motto" maxlength="120" required></label>
+            <label>Home page headline<input name="headline" maxlength="120" required></label>
+            <label>Phone<input name="phone" type="tel" maxlength="40"></label>
+            <label>Email<input name="email" type="email" maxlength="120"></label>
+            <label>Postal address<input name="address" maxlength="160"></label>
+            <label class="full-field">Home page introduction<textarea name="introduction" rows="3" maxlength="300" required></textarea></label>
+          </div>
+          <label class="check-row"><input type="checkbox" name="admissionsOpen"> Admissions are open</label>
+          <div class="settings-actions"><button class="button button-primary" type="submit">Save school details</button><p class="form-feedback" aria-live="polite"></p></div>
+        </form>
+      </section>
+      <p class="global-feedback" id="global-feedback" role="status" aria-live="polite"></p>
+    </main>
+  </div>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/site-data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

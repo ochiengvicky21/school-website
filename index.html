@@ -1,814 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Your School Name</title>
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <script src="https://kit.fontawesome.com/6d2ea823d0.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover learning, community and admissions at Mellanies Academy.">
+  <title>Mellanies Academy| Learning for life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="logo" href="index.html">
+        <img src="images/logo.png" alt="">
+        <span class="school-name"><strong data-school-setting="schoolName">Mellanies Academy</strong><small data-school-setting="motto">Knowledge · Discipline · Excellence</small></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li><li><a href="about.html">Our School</a></li>
+        <li><a href="academics.html">Learning</a></li><li><a href="admissions.html">Admissions</a></li>
+        <li><a href="student-life.html">School Life</a></li><li><a href="news.html">News & Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a class="header-apply" href="admissions.html">Enquire now <span aria-hidden="true">↗</span></a>
+      <button class="menu-btn" type="button" aria-label="Toggle navigation" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </nav>
+  </header>
 
-    <!-- ================= HEADER ================= -->
-
-    <header>
-
-        <nav class="navbar">
-
-            <div class="logo">
-
-                <img src="images/logo.png" alt="School Logo">
-
-                <div class="school-name">
-                    <h2>THE LITTLE HARVAD</h2>
-                    <span>Knowledge • Discipline • Excellence</span>
-                </div>
-
-            </div>
-
-            <ul class="nav-links">
-
-                <li><a href="index.html" class="active">Home</a></li>
-
-                <li><a href="about.html">About</a></li>
-
-                <li><a href="academics.html">Academics</a></li>
-
-                <li><a href="admissions.html">Admissions</a></li>
-
-                <li><a href="gallery.html">Gallery</a></li>
-
-                <li><a href="staff.html">Staff</a></li>
-
-                <li><a href="news.html">News</a></li>
-
-                <li><a href="contact.html">Contact</a></li>
-
-            </ul>
-
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
-
-        </nav>
-
-    </header>
-
-<!-- ==========================================
-HERO SLIDER
-========================================== -->
-
-<section class="hero-slider">
-    
-    <div class="slide active">
-        
-        <img src="images/hero1.jpg" alt="Hero 1">
-        
-        <div class="overlay"></div>
-        
-        <div class="hero-content">
-            
-            <h4>Welcome to</h4>
-            
-            <h1>Your School Name</h1>
-            
-            <p>
-                
-                Nurturing Excellence • Building Character • Inspiring Innovation
-                
-            </p>
-            
-            <div class="hero-buttons">
-                
-                <a href="admissions.html" class="btn-primary">
-                
-                    Apply Now
-                    
-                </a>
-                
-                <a href="about.html" class="btn-outline-light">
-                
-                    Learn More
-                    
-                </a>
-                
-            </div>
-            
-        </div>
-        
-    </div>
-    
-    <div class="slide">
-        
-        <img src="images/hero2.jpg" alt="Hero 2">
-        
-        <div class="overlay"></div>
-        
-        <div class="hero-content">
-            
-            <h4>Academic Excellence</h4>
-            
-            <h1>Preparing Future Leaders</h1>
-            
-            <p>
-                
-                Delivering quality education through modern teaching methods.
-                
-            </p>
-            
-            <div class="hero-buttons">
-                
-                <a href="academics.html" class="btn-primary">
-                
-                    Our Academics
-                    
-                </a>
-                
-            </div>
-            
-        </div>
-        
-    </div>
-    
-    <div class="slide">
-        
-        <img src="images/hero3.jpg" alt="Hero 3">
-        
-        <div class="overlay"></div>
-        
-        <div class="hero-content">
-            
-            <h4>Innovation</h4>
-            
-            <h1>Coding • Robotics • STEM</h1>
-            
-            <p>
-                
-                Empowering learners with 21st-century skills.
-                
-            </p>
-            
-            <div class="hero-buttons">
-                
-                <a href="gallery.html" class="btn-primary">
-                
-                    View Gallery
-                    
-                </a>
-                
-            </div>
-            
-        </div>
-        
-    </div>
-    
-    <div class="slide">
-        
-        <img src="images/hero4.jpg" alt="Hero 4">
-        
-        <div class="overlay"></div>
-        
-        <div class="hero-content">
-            
-            <h4>Admissions Open</h4>
-            
-            <h1>Join Our School Family</h1>
-            
-            <p>
-                
-                Enroll today and become part of an inspiring learning community.
-                
-            </p>
-            
-            <div class="hero-buttons">
-                
-                <a href="admissions.html" class="btn-primary">
-                
-                    Apply Today
-                    
-                </a>
-                
-            </div>
-            
-        </div>
-        
-    </div>
-    
-    <!-- Navigation -->
-    
-    <div class="slider-arrows">
-        
-        <button id="prevSlide">
-        
-            <i class="fas fa-chevron-left"></i>
-            
-        </button>
-        
-        <button id="nextSlide">
-        
-            <i class="fas fa-chevron-right"></i>
-            
-        </button>
-        
-    </div>
-    
-    <!-- Dots -->
-    
-    <div class="slider-dots">
-        
-        <span class="dot active"></span>
-        
-        <span class="dot"></span>
-        
-        <span class="dot"></span>
-        
-        <span class="dot"></span>
-        
-    </div>
-    
-    <!-- Scroll Indicator -->
-    
-    <div class="scroll-indicator">
-        
-        <i class="fas fa-angle-down"></i>
-        
-    </div>
-    
-</section>
-<!-- ==========================================
-QUICK ACCESS
-========================================== -->
-
-<section class="quick-access">
-    
-    <div class="container">
-        
-        <div class="section-title">
-            
-            <h2>Quick Access</h2>
-            
-            <p>
-                
-                Everything you need is just one click away.
-                
-            </p>
-            
-        </div>
-        
-        <div class="quick-grid">
-            
-            <a href="admissions.html" class="quick-card">
-            
-                <div class="quick-icon">
-                    
-                    <i class="fas fa-user-plus"></i>
-                    
-                </div>
-                
-                <h3>Apply Now</h3>
-                
-                <p>
-                    
-                    Start the admission process.
-                    
-                </p>
-                
-            </a>
-            
-            <a href="downloads.html" class="quick-card">
-            
-                <div class="quick-icon">
-                    
-                    <i class="fas fa-download"></i>
-                    
-                </div>
-                
-                <h3>Downloads</h3>
-                
-                <p>
-                    
-                    Forms, calendar and prospectus.
-                    
-                </p>
-                
-            </a>
-            
-            <a href="academics.html" class="quick-card">
-            
-                <div class="quick-icon">
-                    
-                    <i class="fas fa-book-open"></i>
-                    
-                </div>
-                
-                <h3>Academics</h3>
-                
-                <p>
-                    
-                    Explore our curriculum.
-                    
-                </p>
-                
-            </a>
-            
-            <a href="#" class="quick-card">
-            
-                <div class="quick-icon">
-                    
-                    <i class="fas fa-user-graduate"></i>
-                    
-                </div>
-                
-                <h3>Student Portal</h3>
-                
-                <p>
-                    
-                    Access academic resources.
-                    
-                </p>
-                
-            </a>
-            
-            <a href="#" class="quick-card">
-            
-                <div class="quick-icon">
-                    
-                    <i class="fas fa-users"></i>
-                    
-                </div>
-                
-                <h3>Parent Portal</h3>
-                
-                <p>
-                    
-                    Monitor student progress.
-                    
-                </p>
-                
-            </a>
-            
-            <a href="gallery.html" class="quick-card">
-            
-                <div class="quick-icon">
-                    
-                    <i class="fas fa-images"></i>
-                    
-                </div>
-                
-                <h3>Gallery</h3>
-                
-                <p>
-                    
-                    Campus life in pictures.
-                    
-                </p>
-                
-            </a>
-            
-            <a href="contact.html" class="quick-card">
-            
-                <div class="quick-icon">
-                    
-                    <i class="fas fa-map-marker-alt"></i>
-                    
-                </div>
-                
-                <h3>Book a Visit</h3>
-                
-                <p>
-                    
-                    Schedule a campus tour.
-                    
-                </p>
-                
-            </a>
-            
-            <a href="contact.html" class="quick-card">
-            
-                <div class="quick-icon">
-                    
-                    <i class="fas fa-phone-alt"></i>
-                    
-                </div>
-                
-                <h3>Contact Us</h3>
-                
-                <p>
-                    
-                    We're here to help.
-                    
-                </p>
-                
-            </a>
-            
-        </div>
-        
-    </div>
-    
-</section>
-
-    <!-- ================= ABOUT ================= -->
-
-    <section class="about">
-
-        <div class="container">
-
-            <div class="section-title">
-
-                <h2>About Our School</h2>
-
-                <p>
-                    Building future leaders through academic excellence,
-                    integrity and innovation.
-                </p>
-
-            </div>
-
-            <div class="about-grid">
-
-                <div>
-
-                    <h3>Our Mission</h3>
-
-                    <p>
-
-                        To provide holistic education that nurtures
-                        intellectual growth, creativity,
-                        discipline and responsible citizenship.
-
-                    </p>
-
-                </div>
-
-                <div>
-
-                    <h3>Our Vision</h3>
-
-                    <p>
-
-                        To become a centre of excellence producing
-                        globally competitive learners.
-
-                    </p>
-
-                </div>
-
-                <div>
-
-                    <h3>Our Motto</h3>
-
-                    <p>
-
-                        Knowledge • Discipline • Excellence
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
+  <main>
+    <section class="school-hero">
+      <img class="school-hero-image" src="images/hero.jpg" alt="A welcoming view of the school and its learners">
+      <div class="school-hero-shade"></div>
+      <div class="school-hero-content">
+        <span class="hero-kicker"><i></i> A place to belong. A place to become.</span>
+        <h1 data-school-setting="headline">A bright beginning.<br>A brilliant future.</h1>
+        <p data-school-setting="introduction">A caring learning community where every child is known, challenged and encouraged to thrive.</p>
+        <div class="hero-actions"><a class="school-button button-gold" href="admissions.html">Explore admissions <span>↗</span></a><a class="hero-text-link" href="about.html">Discover our school <span>→</span></a></div>
+      </div>
+      <div class="hero-caption"><span>Curiosity lives here</span><span class="caption-line"></span><span>Since 2004</span></div>
     </section>
 
-    <!-- ================= WHY CHOOSE US ================= -->
-
-    <section class="features">
-
-        <div class="container">
-
-            <div class="section-title">
-
-                <h2>Why Choose Us</h2>
-
-            </div>
-
-            <div class="cards">
-
-                <div class="card">
-
-                    <i class="fas fa-graduation-cap"></i>
-
-                    <h3>Quality Education</h3>
-
-                    <p>
-
-                        Experienced teachers delivering
-                        learner-centered education.
-
-                    </p>
-
-                </div>
-
-                <div class="card">
-
-                    <i class="fas fa-laptop"></i>
-
-                    <h3>Digital Learning</h3>
-
-                    <p>
-
-                        ICT integrated learning
-                        for the modern world.
-
-                    </p>
-
-                </div>
-
-                <div class="card">
-
-                    <i class="fas fa-futbol"></i>
-
-                    <h3>Co-curricular Activities</h3>
-
-                    <p>
-
-                        Sports, music, drama,
-                        clubs and talent development.
-
-                    </p>
-
-                </div>
-
-                <div class="card">
-
-                    <i class="fas fa-award"></i>
-
-                    <h3>Excellent Performance</h3>
-
-                    <p>
-
-                        Consistent academic success
-                        and character development.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <section class="announcement-bar" aria-label="School notice">
+      <div class="announcement-label"><span>●</span> SCHOOL NOTICE</div>
+      <div class="announcement-items" data-notice-list></div>
+      <a href="news.html" class="announcement-link">All updates <span>→</span></a>
     </section>
 
-    <!-- ================= PRINCIPAL ================= -->
-
-    <section class="principal">
-
-        <div class="container principal-grid">
-
-            <div>
-
-                <img src="images/principal.jpg" alt="Principal">
-
-            </div>
-
-            <div>
-
-                <h2>Message From The Principal</h2>
-
-                <p>
-
-                    Welcome to our school.
-
-                    We believe every learner has unique potential.
-
-                    Through dedicated teachers,
-                    modern learning resources and a nurturing
-                    environment, we inspire our students to
-                    excel academically while developing integrity,
-                    leadership and responsibility.
-
-                </p>
-
-                <a href="about.html" class="btn-primary">
-
-                    Read More
-
-                </a>
-
-            </div>
-
-        </div>
-
+    <section class="welcome-section">
+      <div class="welcome-copy">
+        <p class="section-eyebrow">WELCOME TO MELLANIES ACADEMY</p>
+        <h2>Big-hearted learning<br>for <em>bright futures.</em></h2>
+        <p>Every child has a spark. We create the space, guidance and encouragement to help it grow — in the classroom, on the field and in the community.</p>
+        <a class="underlined-link" href="about.html">Get to know our school <span>↗</span></a>
+      </div>
+      <div class="welcome-photo">
+        <img src="images/hero12.jpg" alt="Learners sharing a moment at school">
+        <div class="photo-note"><strong>Every learner matters.</strong><span>Growing together, every day.</span></div>
+        <div class="photo-stamp">LEARN<br>WITH JOY</div>
+      </div>
     </section>
 
-    
-</div>
-
-    <!-- ================= STATISTICS ================= -->
-
-    <section class="statistics">
-
-        <div class="container stats">
-
-            <div>
-
-                <h2>500+</h2>
-
-                <p>Students</p>
-
-            </div>
-
-            <div>
-
-                <h2>25+</h2>
-
-                <p>Teachers</p>
-
-            </div>
-
-            <div>
-
-                <h2>30+</h2>
-
-                <p>Years of Excellence</p>
-
-            </div>
-
-            <div>
-
-                <h2>100%</h2>
-
-                <p>Commitment</p>
-
-            </div>
-
-        </div>
-
+    <section class="learning-section">
+      <div class="section-heading-row">
+        <div><p class="section-eyebrow">A JOURNEY THAT GROWS WITH THEM</p><h2>Learning at every stage</h2></div>
+        <a class="underlined-link" href="academics.html">Explore academics <span>↗</span></a>
+      </div>
+      <div class="learning-grid">
+        <a class="learning-card early-years" href="academics.html"><span class="learning-number">01 / DISCOVER</span><span class="learning-icon">✿</span><h3>Early Years</h3><p>Confident first steps through play, wonder and belonging.</p><span class="card-arrow">↗</span></a>
+        <a class="learning-card primary-years" href="academics.html"><span class="learning-number">02 / EXPLORE</span><span class="learning-icon">✳</span><h3>Primary School</h3><p>Strong foundations, joyful curiosity and growing independence.</p><span class="card-arrow">↗</span></a>
+        <a class="learning-card junior-years" href="academics.html"><span class="learning-number">03 / FLOURISH</span><span class="learning-icon">✧</span><h3>Junior School</h3><p>New challenges, deeper thinking and room to find their strengths.</p><span class="card-arrow">↗</span></a>
+      </div>
     </section>
 
-    <!-- ================= NEWS ================= -->
-
-    <section class="news">
-
-        <div class="container">
-
-            <div class="section-title">
-
-                <h2>Latest News</h2>
-
-            </div>
-
-            <div class="news-grid">
-
-                <article>
-
-                    <img src="images/news1.jpg" alt="News">
-
-                    <h3>School Opens for New Term</h3>
-
-                    <p>
-
-                        Welcome all learners as
-                        we begin another exciting term.
-
-                    </p>
-
-                </article>
-
-                <article>
-
-                    <img src="images/news2.jpg" alt="News">
-
-                    <h3>Sports Championship</h3>
-
-                    <p>
-
-                        Celebrating excellence
-                        in sports and teamwork.
-
-                    </p>
-
-                </article>
-
-                <article>
-
-                    <img src="images/news3.jpg" alt="News">
-
-                    <h3>Science Fair</h3>
-
-                    <p>
-
-                        Learners showcase innovative
-                        science projects.
-
-                    </p>
-
-                </article>
-
-            </div>
-
-        </div>
-
+    <section class="school-values">
+      <div class="values-intro"><p class="section-eyebrow">MORE THAN A CLASSROOM</p><h2>Curious minds.<br><em>Kind hearts.</em></h2><p>We bring strong learning together with character, creativity and a genuine sense of community.</p></div>
+      <div class="values-list">
+        <article><span>01</span><div><h3>Learning with purpose</h3><p>Engaging lessons help learners build knowledge, confidence and a love of discovery.</p></div><i>↗</i></article>
+        <article><span>02</span><div><h3>Known and supported</h3><p>We work closely with families so each child feels seen, safe and ready to grow.</p></div><i>↗</i></article>
+        <article><span>03</span><div><h3>Character for life</h3><p>Respect, responsibility and compassion shape how we learn and live together.</p></div><i>↗</i></article>
+        <article><span>04</span><div><h3>Talents to discover</h3><p>Sport, arts, clubs and hands-on experiences give every learner ways to shine.</p></div><i>↗</i></article>
+      </div>
     </section>
 
-    <!-- ================= CALL TO ACTION ================= -->
-
-    <section class="cta">
-
-        <div class="container">
-
-            <h2>
-
-                Join Our School Today
-
-            </h2>
-
-            <p>
-
-                Admissions are currently open.
-
-                We welcome learners who are ready
-                to achieve excellence.
-
-            </p>
-
-            <a href="admissions.html" class="btn-primary">
-
-                Apply Today
-
-            </a>
-
-        </div>
-
+    <section class="updates-section">
+      <div class="section-heading-row">
+        <div><p class="section-eyebrow">LIFE AROUND OUR SCHOOL</p><h2>What's happening</h2></div>
+        <a class="underlined-link" href="news.html">News, notices & events <span>↗</span></a>
+      </div>
+      <div class="updates-layout">
+        <div class="updates-list" data-news-list></div>
+        <aside class="events-panel"><div class="events-heading"><div><p class="section-eyebrow">SAVE THE DATE</p><h3>Coming up</h3></div><a href="news.html" aria-label="See all events">↗</a></div><div class="events-list" data-event-list></div></aside>
+      </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
+    <section class="admissions-banner">
+      <div class="admissions-copy"><p class="section-eyebrow">YOUR NEXT CHAPTER STARTS HERE</p><h2>A school where<br>potential <em>takes flight.</em></h2><p>Come and see what makes our community special. Our team is ready to help you take the next step.</p><a class="school-button button-gold" href="admissions.html">Start an enquiry <span>↗</span></a></div>
+      <div class="admissions-side"><span class="admission-open" data-admissions-status>Admissions are open</span><span class="admissions-mark">LH</span><p>We'd love to<br>meet your family.</p><a href="contact.html">Plan a school visit →</a></div>
+    </section>
+  </main>
 
-    <footer>
-
-        <div class="container footer-grid">
-
-            <div>
-
-                <h3>Your School Name</h3>
-
-                <p>
-
-                    Educating, Inspiring and
-                    Transforming Future Leaders.
-
-                </p>
-
-            </div>
-
-            <div>
-
-                <h3>Quick Links</h3>
-
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="admissions.html">Admissions</a>
-                <a href="contact.html">Contact</a>
-
-            </div>
-
-            <div>
-
-                <h3>Contact</h3>
-
-                <p>📍 School Address</p>
-
-                <p>📞 +254 742 676 542</p>
-
-                <p>✉ info@littleharvad.ac.ke</p>
-
-            </div>
-
-        </div>
-
-        <div class="copyright">
-
-            © 2026 Your School Name.
-            All Rights Reserved.
-
-        </div>
-        <!-- ==========================
-FLOATING WHATSAPP
-========================== -->
-
-<a href="https://wa.me/254742676542?text=Hello%20Little%20Harvard%20School,%20I%20would%20like%20to%20make%20an%20enquiry."
-class="whatsapp-float"
-target="_blank"
-aria-label="Chat with Little Harvard School on WhatsApp">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
-    </footer>
-
-    <script src="js/script.js"></script>
-
+  <footer class="school-footer">
+    <div class="footer-main">
+      <div class="footer-brand"><a class="logo" href="index.html"><img src="images/logo.png" alt=""><span class="school-name"><strong data-school-setting="schoolName">Mellanies Academy</strong><small data-school-setting="motto">Knowledge · Discipline · Excellence</small></span></a><p>Growing thoughtful learners and kind, confident people.</p></div>
+      <div><h3>Explore</h3><a href="about.html">Our School</a><a href="academics.html">Learning</a><a href="student-life.html">School Life</a><a href="gallery.html">Gallery</a></div>
+      <div><h3>For families</h3><a href="admissions.html">Admissions</a><a href="downloads.html">Downloads</a><a href="news.html">News & Events</a><a href="faq.html">FAQs</a></div>
+      <div><h3>Say hello</h3><a data-school-href="phone" href="tel:+254742676542" data-school-setting="phone">+254 742 676 542</a><a data-school-href="email" href="mailto:ochiengvicky21@gmail.com" data-school-setting="email">ochiengvicky21@gmail.com</a><p data-school-setting="address">P.O. Box 40300, Kenya</p><a class="footer-contact-link" href="contact.html">Contact the school ↗</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 <span data-school-setting="schoolName">Mellanies Academy</span></span><span>Made for curious minds.</span><a href="admin.html">School office</a></div>
+  </footer>
+  <a href="https://wa.me/254742676542?text=Hello%20Mellanies%20Academy%2C%20I%20would%20like%20to%20make%20an%20enquiry." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Mellanies Academy on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/site-data.js"></script>
+  <script src="js/public-site.js"></script>
+  <script src="js/script.js"></script>
 </body>
-
 </html>

@@ -4,21 +4,131 @@
 
 const menuBtn = document.querySelector(".menu-btn");
 const navLinks = document.querySelector(".nav-links");
+const publicPages = [
+  ["index.html", "Home"],
+  ["about.html", "Our School"],
+  ["academics.html", "Learning"],
+  ["admissions.html", "Admissions"],
+  ["student-life.html", "School Life"],
+  ["news.html", "News & Events"],
+  ["contact.html", "Contact"]
+];
+const additionalPages = [
+  ["downloads.html", "Downloads"],
+  ["gallery.html", "Gallery"],
+  ["staff.html", "Staff"],
+  ["facilities.html", "Facilities"],
+  ["faq.html", "FAQs"]
+];
 
-if (menuBtn) {
-  
-  menuBtn.addEventListener("click", () => {
-    
-    navLinks.classList.toggle("show");
-    
-    if (navLinks.classList.contains("show")) {
-      menuBtn.innerHTML = '<i class="fas fa-times"></i>';
-    } else {
-      menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-    }
-    
+if (navLinks) {
+  const currentPage = location.pathname.split("/").pop() || "index.html";
+  navLinks.id ||= "site-primary-navigation";
+  navLinks.setAttribute("aria-label", "Main navigation");
+  navLinks.replaceChildren();
+
+  publicPages.forEach(([href, label]) => {
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = href;
+    link.textContent = label;
+    link.classList.toggle("active", href === currentPage);
+    if (href === currentPage) link.setAttribute("aria-current", "page");
+    item.append(link);
+    navLinks.append(item);
   });
-  
+
+  const moreItem = document.createElement("li");
+  moreItem.className = "nav-more";
+  const moreButton = document.createElement("button");
+  moreButton.type = "button";
+  moreButton.className = "nav-more-toggle";
+  moreButton.textContent = "More";
+  moreButton.setAttribute("aria-expanded", "false");
+  moreButton.setAttribute("aria-controls", "site-nav-more");
+  const submenu = document.createElement("ul");
+  submenu.className = "nav-submenu";
+  submenu.id = "site-nav-more";
+  submenu.hidden = true;
+  additionalPages.forEach(([href, label]) => {
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = href;
+    link.textContent = label;
+    link.classList.toggle("active", href === currentPage);
+    if (href === currentPage) {
+      link.setAttribute("aria-current", "page");
+      moreButton.classList.add("active");
+    }
+    item.append(link);
+    submenu.append(item);
+  });
+  moreItem.append(moreButton, submenu);
+  navLinks.append(moreItem);
+
+  moreButton.addEventListener("click", () => {
+    const expanded = moreButton.getAttribute("aria-expanded") !== "true";
+    moreButton.setAttribute("aria-expanded", String(expanded));
+    moreItem.classList.toggle("open", expanded);
+    submenu.hidden = !expanded;
+  });
+}
+
+if (menuBtn && navLinks) {
+  let accessibleMenuBtn = menuBtn;
+  if (menuBtn.tagName !== "BUTTON") {
+    accessibleMenuBtn = document.createElement("button");
+    accessibleMenuBtn.className = menuBtn.className;
+    menuBtn.replaceWith(accessibleMenuBtn);
+  }
+
+  accessibleMenuBtn.type = "button";
+  accessibleMenuBtn.setAttribute("aria-controls", navLinks.id);
+  accessibleMenuBtn.setAttribute("aria-label", "Open navigation menu");
+  accessibleMenuBtn.setAttribute("aria-expanded", "false");
+
+  const closeMenu = (restoreFocus = false) => {
+    navLinks.classList.remove("show");
+    accessibleMenuBtn.textContent = "☰";
+    accessibleMenuBtn.setAttribute("aria-label", "Open navigation menu");
+    accessibleMenuBtn.setAttribute("aria-expanded", "false");
+    if (restoreFocus) accessibleMenuBtn.focus();
+  };
+
+  accessibleMenuBtn.textContent = "☰";
+  accessibleMenuBtn.addEventListener("click", () => {
+    const expanded = !navLinks.classList.contains("show");
+    navLinks.classList.toggle("show", expanded);
+    accessibleMenuBtn.textContent = expanded ? "×" : "☰";
+    accessibleMenuBtn.setAttribute("aria-label", expanded ? "Close navigation menu" : "Open navigation menu");
+    accessibleMenuBtn.setAttribute("aria-expanded", String(expanded));
+  });
+
+  navLinks.addEventListener("click", event => {
+    if (event.target.closest("a")) closeMenu();
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      if (navLinks.classList.contains("show")) closeMenu(true);
+      const moreItem = navLinks.querySelector(".nav-more.open");
+      const moreButton = moreItem?.querySelector(".nav-more-toggle");
+      if (moreItem && moreButton) {
+        moreItem.classList.remove("open");
+        moreButton.setAttribute("aria-expanded", "false");
+        moreItem.querySelector(".nav-submenu").hidden = true;
+        moreButton.focus();
+      }
+    }
+  });
+
+  document.addEventListener("click", event => {
+    if (navLinks.classList.contains("show") && !event.target.closest(".navbar")) closeMenu();
+  });
+
+  window.matchMedia("(min-width: 1101px)").addEventListener("change", event => {
+    if (event.matches) closeMenu();
+  });
 }
 
 // =========================================
@@ -31,12 +141,12 @@ window.addEventListener("scroll", () => {
   
   if (window.scrollY > 60) {
     
-    header.style.background = "#08384D";
+    header.style.background = "#102d38";
     header.style.boxShadow = "0 10px 25px rgba(0,0,0,.25)";
     
   } else {
     
-    header.style.background = "#0B4F6C";
+    header.style.background = "#123037";
     header.style.boxShadow = "0 5px 15px rgba(0,0,0,.15)";
     
   }
@@ -66,39 +176,28 @@ links.forEach(link => {
 // =========================================
 
 const revealItems = document.querySelectorAll(
-  ".card, .about-grid div, .principal-grid, .news-grid article"
+  ".card, .about-grid div, .principal-grid, .news-grid article, .learning-card, .school-update, .event-card, .staff-card, .gallery-item, .faq-item, .download-card, .school-values article"
 );
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const revealOnScroll = () => {
-  
-  revealItems.forEach(item => {
-    
-    const top = item.getBoundingClientRect().top;
-    
-    const windowHeight = window.innerHeight;
-    
-    if (top < windowHeight - 100) {
-      
-      item.style.opacity = "1";
-      item.style.transform = "translateY(0)";
-      
-    }
-    
+if (!reducedMotion && "IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealItems.forEach((item, index) => {
+    item.style.setProperty("--reveal-order", String(index % 5));
+    item.classList.add("reveal-on-scroll");
+    revealObserver.observe(item);
   });
-  
-};
-
-revealItems.forEach(item => {
-  
-  item.style.opacity = "0";
-  item.style.transform = "translateY(60px)";
-  item.style.transition = ".8s ease";
-  
-});
-
-window.addEventListener("scroll", revealOnScroll);
-
-revealOnScroll();
+} else {
+  revealItems.forEach(item => item.classList.add("is-visible"));
+}
 
 // =========================================
 // Animated Statistics
@@ -124,7 +223,8 @@ window.addEventListener("scroll", () => {
       
       const text = counter.innerText;
       
-      const number = parseInt(text.replace(/\D/g, ""));
+      const number = Number.parseInt(text.replace(/\D/g, ""), 10);
+      if (!Number.isFinite(number)) return;
       
       const suffix = text.replace(/[0-9]/g, "");
       
@@ -163,36 +263,27 @@ window.addEventListener("scroll", () => {
 // =========================================
 
 const topButton = document.createElement("button");
-
-topButton.innerHTML = "↑";
-
+topButton.type = "button";
+topButton.textContent = "↑";
 topButton.className = "backToTop";
+topButton.setAttribute("aria-label", "Back to top");
 
 document.body.appendChild(topButton);
 
 window.addEventListener("scroll", () => {
-  
+
   if (window.scrollY > 400) {
-    
     topButton.classList.add("show");
-    
   } else {
-    
     topButton.classList.remove("show");
-    
   }
-  
 });
 
 topButton.addEventListener("click", () => {
-  
   window.scrollTo({
-    
     top: 0,
-    behavior: "smooth"
-    
+    behavior: reducedMotion ? "auto" : "smooth"
   });
-  
 });
 
 // =========================================
@@ -203,7 +294,7 @@ window.addEventListener("load", () => {
   
   const hero = document.querySelector(".hero-content");
   
-  if (hero) {
+  if (hero && !reducedMotion) {
     
     hero.style.opacity = "0";
     hero.style.transform = "translate(-50%, -40%)";
@@ -228,6 +319,20 @@ window.addEventListener("load", () => {
 const images = document.querySelectorAll("img");
 
 images.forEach(img => {
+  const replaceMissingImage = () => {
+    if (img.dataset.fallbackApplied) return;
+    img.dataset.fallbackApplied = "true";
+    if (img.src.includes("/facilities/")) {
+      img.src = "images/hero.jpg";
+    } else if (img.src.includes("/gallery/") || img.src.includes("/news/")) {
+      img.src = "images/hero12.jpg";
+    } else if (img.src.includes("/staff/") || img.src.includes("/staff-")) {
+      img.src = "images/principal.jpg";
+    }
+  };
+
+  img.addEventListener("error", replaceMissingImage);
+  if (img.complete && img.naturalWidth === 0) replaceMissingImage();
   
   img.addEventListener("mouseenter", () => {
     
@@ -344,20 +449,19 @@ function prevSlide() {
   
 }
 
-setInterval(nextSlide, 5000);
+if (slides.length) {
+  setInterval(nextSlide, 5000);
 
-document.getElementById("nextSlide").onclick = nextSlide;
+  const nextButton = document.getElementById("nextSlide");
+  const previousButton = document.getElementById("prevSlide");
 
-document.getElementById("prevSlide").onclick = prevSlide;
+  if (nextButton) nextButton.onclick = nextSlide;
+  if (previousButton) previousButton.onclick = prevSlide;
 
-dots.forEach((dot, index) => {
-  
-  dot.onclick = () => {
-    
-    currentSlide = index;
-    
-    showSlide(index);
-    
-  };
-  
-});
+  dots.forEach((dot, index) => {
+    dot.onclick = () => {
+      currentSlide = index;
+      showSlide(index);
+    };
+  });
+}

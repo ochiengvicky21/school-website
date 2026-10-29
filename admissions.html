@@ -6,13 +6,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admissions | The Little Harvad</title>
+<title>Admissions | The Little Harvard Academy</title>
 
 <link rel="stylesheet" href="css/style.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<script src="https://kit.fontawesome.com/6d2ea823d0.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -97,6 +95,7 @@ Begin your child's journey towards academic excellence.
 <div class="section-title">
 
 <h2>Admission Process</h2>
+<p class="admissions-live-status" data-admissions-status>Admissions are open</p>
 
 <p>
 
@@ -244,59 +243,11 @@ Receive confirmation and reporting instructions.
 
 </div>
 
-<table class="fee-table">
-
-<tr>
-
-<th>Class</th>
-
-<th>Tuition Fee</th>
-
-<th>Other Charges</th>
-
-</tr>
-
-<tr>
-
-<td>Grade 1-3</td>
-
-<td>KES XX,XXX</td>
-
-<td>KES X,XXX</td>
-
-</tr>
-
-<tr>
-
-<td>Grade 4-6</td>
-
-<td>KES XX,XXX</td>
-
-<td>KES X,XXX</td>
-
-</tr>
-
-<tr>
-
-<td>Junior School</td>
-
-<td>KES XX,XXX</td>
-
-<td>KES X,XXX</td>
-
-</tr>
-
-<tr>
-
-<td>Senior School</td>
-
-<td>KES XX,XXX</td>
-
-<td>KES X,XXX</td>
-
-</tr>
-
-</table>
+<div class="fee-info">
+  <p>Fee schedules are shared directly with families because charges may vary by class and school year.</p>
+  <a class="underlined-link" href="contact.html">Request the current fee schedule <span>↗</span></a>
+  <div class="admission-documents" data-admission-documents></div>
+</div>
 
 </div>
 
@@ -314,19 +265,20 @@ Receive confirmation and reporting instructions.
 
 </div>
 
-<form class="admission-form">
+<form class="admission-form" data-submission-form="admission">
+<div class="honeypot" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
-<input type="text" placeholder="Parent Name">
+<input type="text" name="parentName" placeholder="Parent / Guardian Name" required>
 
-<input type="text" placeholder="Student Name">
+<input type="text" name="studentName" placeholder="Student Name" required>
 
-<input type="email" placeholder="Email Address">
+<input type="email" name="email" placeholder="Email Address" required>
 
-<input type="tel" placeholder="Phone Number">
+<input type="tel" name="phone" placeholder="Phone Number" required>
 
-<select>
+<select name="grade" required>
 
-<option>Select Grade</option>
+<option value="">Select Grade</option>
 
 <option>PP1</option>
 
@@ -350,13 +302,16 @@ Receive confirmation and reporting instructions.
 
 </select>
 
-<textarea rows="6" placeholder="Additional Information"></textarea>
+<textarea name="additionalInfo" rows="6" placeholder="Additional Information"></textarea>
 
-<button class="btn-primary">
+<button type="submit" class="btn-primary">
 
 Submit Enquiry
 
 </button>
+<div class="turnstile-widget" data-turnstile></div>
+
+<p class="form-response" data-form-status role="status" aria-live="polite"></p>
 
 </form>
 
@@ -438,9 +393,9 @@ Give your child the opportunity to learn, grow and succeed.
 
 </p>
 
-<a href="#" class="btn-primary">
+<a href="downloads.html" class="btn-primary">
 
-Download Admission Form
+View Admission Forms & Downloads
 
 </a>
 
@@ -499,10 +454,11 @@ Preparing learners for life.
 FLOATING WHATSAPP
 ========================== -->
 
-<a href="https://wa.me/254742676542?text=Hello%20Little%20Harvard%20School,%20I%20would%20like%20to%20make%20an%20enquiry."
+<a href="https://wa.me/254742676542?text=Hello%20Mellanies%20Academy%2C%20I%20would%20like%20to%20make%20an%20enquiry."
 class="whatsapp-float"
 target="_blank"
-aria-label="Chat with Little Harvard School on WhatsApp">
+rel="noopener noreferrer"
+aria-label="Chat with Mellanies Academy on WhatsApp">
 
 <i class="fab fa-whatsapp"></i>
 
@@ -511,6 +467,9 @@ aria-label="Chat with Little Harvard School on WhatsApp">
 </footer>
 
 <script src="js/script.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/site-data.js"></script>
+<script src="js/public-site.js"></script>
 
 </body>
 
