@@ -42,7 +42,7 @@ Administrators and editors can use **Website media & sections** to add and repla
 
 ## 3. Turn on protected public forms
 
-1. Create a Cloudflare Turnstile widget for the production hostname (and a separate local-development hostname if needed).
+1. Create a Cloudflare Turnstile widget for `melaninesacademy.vercel.app` (and a separate local-development hostname if needed).
 2. Set its public site key in `turnstileSiteKey` in [`js/supabase-config.js`](./js/supabase-config.js).
 3. Create a Supabase Edge Function secret for the matching private Turnstile secret. Never put this value in the website files.
 4. Set `TURNSTILE_HOSTNAME` to the exact hostname used by the public website, without `https://` or a trailing slash.
@@ -54,8 +54,8 @@ Without the public Turnstile site key and the matching server-side secret/hostna
 
 Verify a sender domain with Resend, including its DNS records, before sending real email. Set these **server-side Supabase Edge Function secrets** (never in `js/supabase-config.js`):
 
-- `PUBLIC_SITE_ORIGIN` — exact public origin, e.g. `https://www.example.org`
-- `TURNSTILE_SECRET_KEY` and `TURNSTILE_HOSTNAME`
+- `PUBLIC_SITE_ORIGIN` — exact public origin: `https://melaninesacademy.vercel.app`
+- `TURNSTILE_SECRET_KEY` and `TURNSTILE_HOSTNAME` (`melaninesacademy.vercel.app`)
 - `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
 - `RESEND_API_KEY`
 - `SCHOOL_FROM_EMAIL` — a verified sender, e.g. `School Office <office@example.org>` is not needed here; use only `office@example.org`
